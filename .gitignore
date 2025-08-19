@@ -1,0 +1,27 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.monkey-venv/
+monkey-venv/
+
+# Environment variables
+.env
+.idea/
+
+# macOS
+.DS_Store
+
+# Logs / temp
+*log
+activity_csvs/
+*.csv
+invoice/
+*.pdf
+
+# Old files
+retrieval/060825_retrieval_func.py
+processing/080825_tweet_processing.py
+analysis/070825_analysis_func.py
