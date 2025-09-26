@@ -2,7 +2,7 @@
 from retrieval.retrieval_func import tag_activity, pull_tweets
 from processing.tweet_processing import tweet_processing
 from analysis.analysis_func import discourse_temp
-from analysis.openai_api_func import beyond_binary_sentiment_analysis
+from analysis.openai_api_func import beyond_binary_sentiment_analysis, secondary_sentiment_analysis
 from twarc import expansions
 import pandas as pd
 
@@ -30,10 +30,12 @@ print(f"Discourse Temperature of {most_active_tag}: {temp}")
 
 for tweet in processed_tweets:
     emotion = beyond_binary_sentiment_analysis(tweet['text'])
-    print(f"Tweet ID: {tweet['id']}, Emotion: {emotion}")
-    
+    secondary_emotion = secondary_sentiment_analysis(tweet['text'], emotion)
+    print(f"Tweet ID: {tweet['id']}, Emotion: {emotion}, Secondary Emotion: {secondary_emotion}")
+
     tweet['bbs_emotion'] = emotion
-    
+    tweet['secondary_emotion'] = secondary_emotion
+
 # Save processed tweets with emotions
 df = pd.DataFrame(processed_tweets)
 df.to_csv('tweet_log/140825_blm_processed_with_emotions.csv', index=False)

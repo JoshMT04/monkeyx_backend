@@ -6,6 +6,8 @@ def tweet_select(tweets):
     Probability of selection will be adjusted according to the tweet engagement score.
     Parameters:
     tweets (list): A list of processed tweet dictionaries.
+    Returns:
+    tweet (dict): A single tweet dictionary selected based on engagement score.
     '''
     if not tweets:
         return None
